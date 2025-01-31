@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    public delegate bool SortingFuncDelegate(int A, int B);
+    //public delegate bool SortingFuncDelegate(int A, int B);
+    //public delegate bool SortingFuncDelegateV02(string A, string B);
+    // Generic Version 
+    public delegate bool SortingFuncDelegate<T>(T A, T B);
 
     internal class SortingAlgorithms
     {
-        public static void BubbleSort(int[] Arr, SortingFuncDelegate reference)
+        // Generic
+        public static void BubbleSort<T>(T[] Arr, SortingFuncDelegate<T> reference)
         {
             if (Arr?.Length > 0)
             {
@@ -24,6 +28,36 @@ namespace Demo
                 }
             }
         }
+
+        //public static void BubbleSort(int[] Arr, SortingFuncDelegate reference)
+        //{
+        //    if (Arr?.Length > 0)
+        //    {
+        //        for (int i = 0; i < Arr.Length; i++)
+        //        {
+        //            for (int j = 0; j < Arr.Length - i - 1; j++)
+        //            {
+        //                if (reference.Invoke(Arr[j], Arr[j + 1]))
+        //                    SWAP(ref Arr[j], ref Arr[j + 1]);
+        //            }
+        //        }
+        //    }
+        //}
+
+        //public static void BubbleSort(string[] Arr, SortingFuncDelegateV02 reference)
+        //{
+        //    if (Arr?.Length > 0)
+        //    {
+        //        for (int i = 0; i < Arr.Length; i++)
+        //        {
+        //            for (int j = 0; j < Arr.Length - i - 1; j++)
+        //            {
+        //                if (reference.Invoke(Arr[j], Arr[j + 1]))
+        //                    SWAP(ref Arr[j], ref Arr[j + 1]);
+        //            }
+        //        }
+        //    }
+        //}
 
         //public static void BubbleSortAescending(int[] Arr)
         //{
@@ -87,9 +121,24 @@ namespace Demo
         //    }
         //}
 
-        private static void SWAP(ref int X, ref int Y)
+        //private static void SWAP(ref int X, ref int Y)
+        //{
+        //    int Temp = X;
+        //    X = Y;
+        //    Y = Temp;
+        //}
+
+        //private static void SWAP(ref string X, ref string Y)
+        //{
+        //    string Temp = X;
+        //    X = Y;
+        //    Y = Temp;
+        //}
+
+
+        private static void SWAP<T>(ref T X, ref T Y)
         {
-            int Temp = X;
+            T Temp = X;
             X = Y;
             Y = Temp;
         }
